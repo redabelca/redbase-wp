@@ -1,34 +1,19 @@
 <?php
-/**
- * Sample implementation of the Custom Header feature
- *
- * You can add an optional custom header image to header.php like so ...
- *
-	<?php the_header_image_tag(); ?>
- *
- * @link https://developer.wordpress.org/themes/functionality/custom-headers/
- *
- * @package THEME_NAME
- */
+// <?php the_header_image_tag();
 
-/**
- * Set up the WordPress core custom header feature.
- *
- * @uses theme_name_header_style()
- */
 function theme_name_custom_header_setup() {
-	add_theme_support( 'custom-header', apply_filters( 'theme_name_custom_header_args', array(
-		'default-image'          => '',
-		'default-text-color'     => '000000',
-		'width'                  => 1000,
-		'height'                 => 250,
+	add_theme_support( 'custom-header', array(
+		// 'default-image'          => '',
+		// 'default-text-color'     => '000000',
+		'width'                  => 1600,
+		'height'                 => 900,
 		'flex-height'            => true,
-		'wp-head-callback'       => 'theme_name_header_style',
-	) ) );
+		// 'wp-head-callback'       => 'theme_name_header_style'
+	) );
 }
 add_action( 'after_setup_theme', 'theme_name_custom_header_setup' );
 
-if ( ! function_exists( 'theme_name_header_style' ) ) :
+if ( ! function_exists( 'theme_name_header_style' ) ) {
 	/**
 	 * Styles the header image and text displayed on the blog.
 	 *
@@ -44,22 +29,12 @@ if ( ! function_exists( 'theme_name_header_style' ) ) :
 		if ( get_theme_support( 'custom-header', 'default-text-color' ) === $header_text_color ) {
 			return;
 		}
-
 		// If we get this far, we have custom styles. Let's do this.
 		?>
 		<style type="text/css">
 		<?php
 		// Has the text been hidden?
 		if ( ! display_header_text() ) :
-		?>
-			.site-title,
-			.site-description {
-				position: absolute;
-				clip: rect(1px, 1px, 1px, 1px);
-			}
-		<?php
-			// If the user has set a custom color for the text use that.
-			else :
 		?>
 			.site-title a,
 			.site-description {
@@ -69,4 +44,4 @@ if ( ! function_exists( 'theme_name_header_style' ) ) :
 		</style>
 		<?php
 	}
-endif;
+}

@@ -11,8 +11,7 @@
 
 <section class="no-results not-found">
 	<header class="page-header">
-		<h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'theme_name' ); ?></h1>
-	</header><!-- .page-header -->
+		<h1 class="single-post-title"><?php esc_html_e( 'Nothing Found', 'theme_name' ); ?></h1>
 
 	<div class="page-content">
 		<?php
