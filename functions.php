@@ -114,6 +114,27 @@ function child_manage_woocommerce_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'child_manage_woocommerce_styles', 99 );
 
+/*---------------------------------
+Important Plugin Activation Check
+-----------------------------------*/
+function dignity_plugin_error(){
+    echo '<div class="error">
+       <p>Current theme needs <strong>Dignity-Shortcodes</strong> Plugin to work properly.</p>
+    </div>';
+}
+function metabox_plugin_error(){
+    echo '<div class="error">
+       <p>Current theme needs <strong>Meta-box</strong> Plugin activated to work properly.</p>
+    </div>';
+}
+include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+if(is_plugin_active('dignity-shortcodes/shortcodes.php')) 
+{
+}
+else{
+     add_action('admin_notices', 'dignity_plugin_error');
+}
+
 
 // require get_template_directory() . '/inc/template-widgets.php';
 require get_template_directory() . '/inc/template-filters.php';
